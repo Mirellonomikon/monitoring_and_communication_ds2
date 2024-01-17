@@ -19,7 +19,7 @@ public class EnergyCons {
 
     private Integer deviceId;
     private Date timestamp;
-    private double measurement_value;
+        private double measurement_value;
 
     public EnergyCons(Integer deviceId, Date timestamp, double energyConsumption) {
         this.deviceId = deviceId;

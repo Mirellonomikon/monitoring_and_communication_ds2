@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +39,7 @@ public class EnergyConsServiceImpl implements EnergyConsService{
     public void addEnergyCons(EnergyCons energyCons) {
         EnergyCons newEnergyCons = energyConsRepository.save(energyCons);
         ResponseEntity<Integer> maxConsumptionResponse = restTemplate.getForEntity(
-                "http://deviceapp:8081/api/devices/find/max_energy?id={id}",
+                "http://localhost:8081/api/devices/find/max_energy?id={id}",
                 Integer.class,
                 energyCons.getDeviceId()
         );

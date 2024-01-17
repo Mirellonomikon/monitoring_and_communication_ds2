@@ -6,8 +6,6 @@ import com.morello.monitoring_and_communication.services.EnergyConsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +32,9 @@ public class EnergyConsController {
 
     @EventListener(MaxEnergyExceededEvent.class)
     @MessageMapping("/max-exceed")
-    @SendTo("/topic/max_energy_exceeded")
-    public String handleMaxEnergyExceededEvent(@Payload MaxEnergyExceededEvent event) {
-        String message = event.getMessage();
-        return message + ' ' + event.getDeviceId();
+    public void handleMaxEnergyExceededEvent(MaxEnergyExceededEvent event) {
+        String message = "Max energy exceeded for device " + event.getDeviceId();
+        System.out.println(message);
+        messagingTemplate.convertAndSend("/topic/max_energy_exceeded", message);
     }
 }

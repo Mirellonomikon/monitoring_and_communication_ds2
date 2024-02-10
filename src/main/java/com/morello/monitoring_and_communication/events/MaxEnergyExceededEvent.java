@@ -1,7 +1,9 @@
 package com.morello.monitoring_and_communication.events;
 
+import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
+@Getter
 public class MaxEnergyExceededEvent extends ApplicationEvent {
     private final String message;
     private final Integer deviceId;
@@ -12,11 +14,4 @@ public class MaxEnergyExceededEvent extends ApplicationEvent {
         this.message = message;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public Integer getDeviceId() {
-        return deviceId;
-    }
 }

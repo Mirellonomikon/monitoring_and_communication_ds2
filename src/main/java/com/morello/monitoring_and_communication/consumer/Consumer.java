@@ -30,7 +30,7 @@ public class Consumer {
     @Bean
     public void messageConsumer() throws URISyntaxException, NoSuchAlgorithmException, KeyManagementException, IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setUri("amqps://egsbshkj:NjCKxQzILzeK8TWRtK1rZpsCf4nq4Ndp@goose.rmq2.cloudamqp.com/egsbshkj");
+        connectionFactory.setUri("amqps://egsbshkj:NjCKxQdp@goose.rmq2.cloudamqp.com/egsbj");
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(queue_name, false, false, false, null);
